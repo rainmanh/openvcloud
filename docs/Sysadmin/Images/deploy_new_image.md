@@ -29,7 +29,7 @@ mkdir image_xenial-server
 
 Each directory contains 3 files:
 
-- **services.hrd** contains the all required information about ftp server that holds your image
+- **service.hrd** contains the all required information about ftp server that holds your image
 
   - **url**: address of your FTP server from where the image is available, e.g. `ftp://pub:pub1234@ftp.aydo.com`
   - **source**: exact location on the FTP server from where the image can be downloaded, e.g. `/images/image_windows2012`
@@ -123,13 +123,15 @@ cd /opt/code/github/gig-projects/$name-of-your-env-repository$/servicetemplates
 And finally install the image, make sure to specify the name of one/any of the physical nodes (last option argument):
 
 ```
-ays install -n image_xenial-server --targettype node.ssh --targetname $name-of-a-node-in-your-env$
+ays install -n image_xenial-server --targetname $name-of-a-storage-node-in-your-env$
+
 ```
+Example $name-of-a-storage-node-in-your-env$ : stor-01.be-g8-4 
 
 In case you're updating an already previously installed image, use the -r option:
 
 ```
-ays install -r -n image_xenial-server --targettype node.ssh --targetname $name-of-a-node-in-your-env$
+ays install -r -n image_xenial-server --targetname $name-of-a-node-in-your-env$
 ```
 
 
