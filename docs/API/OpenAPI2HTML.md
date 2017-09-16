@@ -20,6 +20,7 @@ For Linux this is done as follows:
 sudo apt-get update
 sudo apt-get install nodejs
 sudo apt-get install npm
+sudo apt-get nodejs-legacy
 ```
 
 
@@ -55,11 +56,8 @@ JWT=$(curl -d 'grant_type=client_credentials&client_id='"$CLIENTID"'&client_secr
 
 ```bash
 G8="https://be-gen-1.demo.greenitglobe.com"
-curl -o openAPI.json -H 'Authorization: Bearer '$JWT $G8/restmachine/system/docgenerator/prepareCatalog?actors=&group=cloudapi&format=jsonraw
+curl -o openAPI.json -H 'Authorization: bearer $JWT' '$JWT $G8/restmachine/system/docgenerator/prepareCatalog?actors=&group=cloudapi&format=jsonraw'
 ```
-
-Press `ctrl+c`.
-
 
 <a id="generate-html"></a>
 ## Generate the static HTML page with Bootprint
@@ -88,3 +86,11 @@ tar -cvzf G8_CloudAPI_Doc.tar.gz html
 ```
 
 For details about the Bootprint command line parameters, refer to the [documentation of Bootprint](https://github.com/nknapp/bootprint).
+
+If you also want to convert the html output into a PDF doc, a recommended tool is :  wkhtmltopdf (https://wkhtmltopdf.org)
+
+usage Example:
+```
+wkhtmltopdf  index.html index.pdf
+```
+
